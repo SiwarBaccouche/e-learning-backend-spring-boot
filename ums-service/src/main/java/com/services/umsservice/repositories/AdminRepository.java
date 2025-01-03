@@ -1,4 +1,9 @@
 package com.services.umsservice.repositories;
 
-public interface AdminRepository {
+import com.services.umsservice.entities.Admin;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, Long> {
 }

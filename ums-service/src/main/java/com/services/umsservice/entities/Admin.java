@@ -1,4 +1,10 @@
 package com.services.umsservice.entities;
 
-public class Admin {
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Data
+@Entity
+public class Admin extends User{
+    private String department;
 }
