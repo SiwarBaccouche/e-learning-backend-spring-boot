@@ -1,9 +1,10 @@
 package com.services.umsservice.entities;
 
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,4 +15,11 @@ import lombok.*;
 @DiscriminatorValue("P")
 public class Parent extends User {
     private int numberOfKids;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Kid> kids = new ArrayList<>();
+
+    public List<Kid> getKids() {
+        return kids;
+    }
 }

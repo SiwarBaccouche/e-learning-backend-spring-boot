@@ -1,4 +1,7 @@
 package com.services.umsservice.services;
 
-public class ServiceKid {
+import org.springframework.stereotype.Service;
+
+@Service
+public class ServiceKid implements IServiceKid{
 }
