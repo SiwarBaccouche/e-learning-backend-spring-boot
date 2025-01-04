@@ -2,6 +2,9 @@ package com.services.umsservice.controllers;
 
 import com.services.umsservice.entities.Kid;
 import com.services.umsservice.services.IServiceParent;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,13 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/e-learning/parents")
+@AllArgsConstructor
 
 public class ParentRestController {
     private final IServiceParent serviceParent;
-
-    public ParentRestController(IServiceParent serviceParent) {
-        this.serviceParent = serviceParent;
-    }
 
     //list all the kids of the parent
     @GetMapping("/{parentId}/get-kids")
@@ -24,6 +24,8 @@ public class ParentRestController {
         return ResponseEntity.ok(kids);
     }
 
+
+
     //add a kid to a parent by a parent
 
     @PostMapping("/{parentId}/add-kid")
@@ -31,5 +33,4 @@ public class ParentRestController {
         Kid savedKid = serviceParent.addKid(parentId, kid);
         return ResponseEntity.ok(savedKid);
     }
-
 }

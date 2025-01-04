@@ -1,5 +1,6 @@
 package com.services.umsservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,10 +17,13 @@ import java.util.List;
 public class Parent extends User {
     private int numberOfKids;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Kid> kids = new ArrayList<>();
 
     public List<Kid> getKids() {
         return kids;
     }
+
+
 }

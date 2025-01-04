@@ -1,10 +1,10 @@
 package com.services.umsservice.entities;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -18,13 +18,12 @@ public class Kid extends User{
     private String school;
     private int age;
 
-
     @ManyToOne
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
-    public void setParent(Parent parent) {
-        this.parent = parent;
+    public Parent getParent() {
+        return parent;
     }
 
 }
