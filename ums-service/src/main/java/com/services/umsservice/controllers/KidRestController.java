@@ -20,10 +20,11 @@ public class KidRestController {
     private final IServiceKid serviceKid;
 
     @GetMapping("/{kidId}/get-parent")
-    public ResponseEntity<Parent> getParent(@PathVariable Long kidId) {
-        Parent parent = serviceKid.getParent(kidId);
+    public ResponseEntity<List<Parent>> getParent(@PathVariable Long kidId) {
+        List<Parent> parent = serviceKid.getParent(kidId);
         return ResponseEntity.ok(parent);
     }
+
 }
 
 

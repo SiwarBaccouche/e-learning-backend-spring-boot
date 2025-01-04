@@ -24,9 +24,13 @@ public class ServiceParent implements IServiceParent{
     @Override
     public Kid addKid(Long parentId, Kid kid) {
         Parent parent = parentRepository.findById(parentId).orElseThrow(() -> new RuntimeException("Parent not found"));
-        kid.setParent(parent);
-        kidRepository.save(kid);
+        parent.getKids().add(kid);
+        parentRepository.save(parent);
         return kid;
     }
 
+    @Override
+    public List<Parent> getAllParents() {
+        return parentRepository.findAll();
+    }
 }

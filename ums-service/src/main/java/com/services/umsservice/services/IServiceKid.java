@@ -6,6 +6,7 @@ import com.services.umsservice.entities.Parent;
 import java.util.List;
 
 public interface IServiceKid {
-    Parent getParent(Long kidId);
+    List<Parent> getParent(Long kidId);
+    List<Kid> getAllKids();
 
 }

@@ -14,8 +14,13 @@ public class ServiceKid implements IServiceKid {
     private final KidRepository kidRepository;
 
     @Override
-    public Parent getParent(Long kidId) {
+    public List<Parent> getParent(Long kidId) {
         Kid kid = kidRepository.findById(kidId).orElseThrow(() -> new RuntimeException("Kid not found"));
-        return kid.getParent();
+        return kid.getParents();
+    }
+
+    @Override
+    public List<Kid> getAllKids() {
+        return kidRepository.findAll();
     }
 }
