@@ -37,4 +37,9 @@ public abstract class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Column(nullable = false)
+    private String role;
+
+
 }

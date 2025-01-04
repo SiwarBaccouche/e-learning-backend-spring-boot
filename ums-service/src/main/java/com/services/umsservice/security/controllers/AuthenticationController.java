@@ -1,8 +1,6 @@
 package com.services.umsservice.security.controllers;
 
-
-import com.services.umsservice.security.entities.AppRole;
-import com.services.umsservice.security.entities.AppUser;
+import com.services.umsservice.entities.User;
 import com.services.umsservice.security.services.IServiceAuth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,32 +14,21 @@ public class AuthenticationController {
 
     private final IServiceAuth iServiceAuth;
 
-    @PostMapping("appuser")
-    public ResponseEntity<Object> adduser(@RequestBody AppUser appUser){
-        AppUser appUser1 = iServiceAuth.createAppUser(appUser);
-        if(appUser1!=null)
-            return new ResponseEntity<>(appUser1, HttpStatus.CREATED);
+    @PostMapping("user")
+    public ResponseEntity<Object> addUser(@RequestBody User user) {
+        User newUser = iServiceAuth.createUser(user);
+        if (newUser != null)
+            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
         else
-            return new ResponseEntity<>("User exit with username "+ appUser.getUsername(),HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("User exists with username " + user.getUsername(), HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @PostMapping("approle")
-
-    public ResponseEntity<Object> addrole(@RequestBody AppRole appRole){
-
-        AppRole appRole1= iServiceAuth.createAppRole(appRole);
-        if(appRole1!=null)
-            return new ResponseEntity<>(appRole1, HttpStatus.CREATED);
-        else
-            return new ResponseEntity<>("Role" + appRole.getRole() + " exists",HttpStatus.NOT_ACCEPTABLE);
-    }
-
-    @PostMapping ("roletouser")
-
-    public ResponseEntity<String> addRoleToUser(@RequestParam String username, @RequestParam String role){
-        if(iServiceAuth.addRoleToUser(username,role))
-            return new ResponseEntity<>("Role " + role + " affected to " + username, HttpStatus.CREATED);
-        else
-            return new ResponseEntity<>("Role still affected " + role, HttpStatus.NOT_ACCEPTABLE);
+    @PostMapping("roletouser")
+    public ResponseEntity<Object> addRoleToUser(@RequestParam String username, @RequestParam String role) {
+        if (iServiceAuth.addRoleToUser(username, role)) {
+            return new ResponseEntity<>("Role " + role + " assigned to " + username, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("Unable to assign role " + role + " to " + username, HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 }

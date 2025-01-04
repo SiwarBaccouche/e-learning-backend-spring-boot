@@ -29,6 +29,6 @@ public class Quiz {
     ////Commented because it generates a bug when trying to make a onToMany relationship whith another module
     /// the question-service module
 //
-//    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<Question> questions;
+//    @OneToMany
+//    private List<Long> questionIds;
 }
