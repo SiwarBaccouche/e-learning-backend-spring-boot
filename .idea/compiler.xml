@@ -10,6 +10,7 @@
         <module name="quiz-service" />
         <module name="ums-service" />
         <module name="config-service" />
+        <module name="question-service" />
         <module name="gateway-service" />
         <module name="discovery-service" />
       </profile>
@@ -21,7 +22,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="scoring-service" />
-        <module name="question-service" />
       </profile>
     </annotationProcessing>
   </component>
