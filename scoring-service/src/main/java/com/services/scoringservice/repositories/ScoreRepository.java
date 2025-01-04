@@ -1,4 +1,8 @@
 package com.services.scoringservice.repositories;
 
-public interface ScoreRepository {
+import com.services.scoringservice.entities.Score;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ScoreRepository extends JpaRepository<Score, Long> {
+
 }

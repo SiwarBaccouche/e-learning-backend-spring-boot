@@ -25,4 +25,10 @@ public class Quiz {
     @JoinColumn(name = "category_id", nullable = false)
     @JsonIgnore
     private Category category;
+
+    ////Commented because it generates a bug when trying to make a onToMany relationship whith another module
+    /// the question-service module
+//
+//    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Question> questions;
 }
