@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "user")
+@DiscriminatorColumn(name = "role")
 public abstract class User {
 
     @Id
@@ -37,9 +37,5 @@ public abstract class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-
-    @Column(nullable = false)
-    private String role;
-
 
 }

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ParentRestController {
     private final IServiceParent serviceParent;
 
-    //list all the kids of the parent
+    @PreAuthorize("hasRole('ROLE_PARENT')")
     @GetMapping("/{parentId}/get-kids")
     public ResponseEntity<List<Kid>> getKids(@PathVariable Long parentId) {
         List<Kid> kids = serviceParent.getKids(parentId);

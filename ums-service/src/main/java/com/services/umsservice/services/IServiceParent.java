@@ -8,6 +8,5 @@ import java.util.List;
 public interface IServiceParent {
     List<Kid> getKids(Long parentId);
     Kid addKid(Long parentId, Kid kid);
-
     List<Parent> getAllParents();
 }

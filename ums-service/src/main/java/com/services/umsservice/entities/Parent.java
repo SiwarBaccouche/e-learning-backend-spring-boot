@@ -17,20 +17,9 @@ import java.util.List;
 public class Parent extends User {
     private int numberOfKids;
 
-//    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-//    @JsonIgnore
-//    private List<Kid> kids = new ArrayList<>();
-//
-//    public List<Kid> getKids() {
-//        return kids;
-//    }
-
-    @ManyToMany(mappedBy = "parents", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "parents", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Kid> kids = new ArrayList<>();
 
-    public List<Kid> getKids() {
-        return kids;
-    }
 
 }
